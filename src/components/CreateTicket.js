@@ -4,13 +4,12 @@ import '../App.css';
 function CreateTicket({ onClose, onCreate }) {
   const [formData, setFormData] = useState({
     id: Date.now(), // Unique ID for the new ticket
-    assignee: '',
-    priority: 'Normal',
-    customerName: '',
-    ticketStatus: 'OPEN',
-    description: '',
+    Assignee: '',
+    Priority: 'Normal',
+    Requester_mail: '',
+    Ticket_status: 'OPEN',
+    Subject: '',
     response: '',
-    orderDetails: ''
   });
 
   const handleChange = (event) => {
@@ -29,13 +28,13 @@ function CreateTicket({ onClose, onCreate }) {
     // Optionally clear form data
     setFormData({
       id: Date.now(), // Reset ID for new ticket
-      assignee: '',
-      priority: 'Normal',
-      customerName: '',
-      ticketStatus: 'OPEN',
-      description: '',
-      response: '',
-      orderDetails: ''
+      Assignee: '',
+      Priority: 'Normal',
+      Requester_mail: '',
+      Ticket_status: 'OPEN',
+      Subject: '',
+      Response: '',
+      
     });
     // Close the form after submission
     onClose();
@@ -46,25 +45,27 @@ function CreateTicket({ onClose, onCreate }) {
       <button onClick={onClose} className='close-button create-button'>X</button>
       <form onSubmit={handleSubmit}>
         <div className='create-div'>
-          <label htmlFor="assignee">Assignee:</label>
+          <label htmlFor="Assignee">Assignee:</label>
           <select
-            id="assignee"
-            name="assignee"
-            value={formData.assignee}
+            id="Assignee"
+            name="Assignee"
+            value={formData.Assignee}
             onChange={handleChange}
             required
           >
             <option value="">Select Assignee</option>
             <option value="Andrews">Andrews</option>
-            {/* Add more options as needed */}
+            <option value="David">David</option>
+            <option value="Salena">Salena</option>
+            
           </select>
         </div>
         <div className='create-div'>
-          <label htmlFor="priority">Priority:</label>
+          <label htmlFor="Priority">Priority:</label>
           <select
-            id="priority"
-            name="priority"
-            value={formData.priority}
+            id="Priority"
+            name="Priority"
+            value={formData.Priority}
             onChange={handleChange}
             required
           >
@@ -75,33 +76,33 @@ function CreateTicket({ onClose, onCreate }) {
           </select>
         </div>
         <div className='create-div'>
-          <label htmlFor="customerName">Customer Name:</label>
+          <label htmlFor="Requester_mail">Customer Email:</label>
           <input
             type="text"
-            id="customerName"
-            name="customerName"
-            value={formData.customerName}
+            id="Requester_mail"
+            name="Requester_mail"
+            value={formData.Requester_mail}
             onChange={handleChange}
             required
           />
         </div>
         <div className='create-div'>
-          <label htmlFor="ticketStatus">Ticket Status:</label>
+          <label htmlFor="Ticket_status">Ticket Status:</label>
           <input
             type="text"
-            id="ticketStatus"
-            name="ticketStatus"
-            value={formData.ticketStatus}
+            id="Ticket_status"
+            name="Ticket_status"
+            value={formData.Ticket_status}
             onChange={handleChange}
             required
           />
         </div>
         <div className='create-div'>
-          <label htmlFor="description">Description:</label>
+          <label htmlFor="Subject">Subject:</label>
           <textarea
-            id="description"
-            name="description"
-            value={formData.description}
+            id="Subject"
+            name="Subject"
+            value={formData.Subject}
             onChange={handleChange}
             required
           />

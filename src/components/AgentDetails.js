@@ -3,6 +3,7 @@ import '../App.css';
 import axios from "axios";
 
 function AgentDetails() {
+    const [showCreateTicket, setShowCreateTicket] = useState(false);
     const columns = ["AgentName", "AgentDepartment",];
     const [data, setData] = useState([]);
     // const data = [

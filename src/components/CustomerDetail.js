@@ -2,23 +2,12 @@ import React from "react";
 import '../App.css';
 
 function CustomerDetail() {
-  const columns = ["Name", "Email", "Tags", "Timezone", "LastUpdated"];
+  const columns = ["Name", "Email", "LastUpdated"];
   const data = [
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    { Name: "John Michael", Email: "JohnMicheal@gmail.com", Tags: "---", Timezone: "(GMT+05:30)", LastUpdated: "22/08/2024" },
-    // Add more rows as needed
+    { Name: "John Michael", Email: "JohnMicheal@gmail.com", LastUpdated: "22/08/2024" },
+    { Name: "John Michael", Email: "JohnMicheal@gmail.com", LastUpdated: "22/08/2024" },
+    { Name: "John Michael", Email: "JohnMicheal@gmail.com", LastUpdated: "22/08/2024" },
+    { Name: "John Michael", Email: "JohnMicheal@gmail.com", LastUpdated: "22/08/2024" },
   ];
 
   return (

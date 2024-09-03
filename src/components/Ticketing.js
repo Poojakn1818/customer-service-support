@@ -8,7 +8,6 @@ function Ticketing() {
   const [showCreateTicket, setShowCreateTicket] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [formData, setFormData] = useState({});
-  const [selectedTickets, setSelectedTickets] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [filteredData, setFilteredData] = useState(null);
   const [data, setData] = useState([
@@ -16,7 +15,7 @@ function Ticketing() {
         id: 1,
         Ticket_status: "OPEN",
         Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
+        Requester_mail: "johnmicheal@gmail.com",
         Requested: "21/08/24",
         Priority: "Normal",
         Assignee: "Andrews",
@@ -26,7 +25,7 @@ function Ticketing() {
         id: 2,
         Ticket_status: "OPEN",
         Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
+        Requester_mail: "johnmicheal@gmail.com",
         Requested: "21/08/24",
         Priority: "Normal",
         Assignee: "Andrews",
@@ -36,117 +35,7 @@ function Ticketing() {
         id: 3,
         Ticket_status: "OPEN",
         Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 4,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 5,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 6,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 7,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 8,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 9,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 10,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 11,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 12,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 13,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
-        Requested: "21/08/24",
-        Priority: "Normal",
-        Assignee: "Andrews",
-        Updated: "22/08/24",
-      },
-      {
-        id: 14,
-        Ticket_status: "OPEN",
-        Subject: "SAMPLE TICKET: order delivery",
-        Requester: "John Michael",
+        Requester_mail: "johnmicheal@gmail.com",
         Requested: "21/08/24",
         Priority: "Normal",
         Assignee: "Andrews",
@@ -162,6 +51,11 @@ function Ticketing() {
     setShowCreateTicket(false);
   };
 
+  const handleCreateTicket = (newTicket) => {
+    setData((prevData) => [...prevData, newTicket]);
+    setShowCreateTicket(false); // Close the form after creating the ticket
+  };
+
   const handleTicketClick = (ticket, column) => {
     if (column === "Ticket_status" || column === "Subject") {
       setSelectedTicket(ticket);
@@ -169,7 +63,7 @@ function Ticketing() {
         id: ticket.id,
         assignee: ticket.Assignee,
         priority: ticket.Priority,
-        customerName: ticket.Requester,
+        customerMail: ticket.Requester_mail,
         ticketStatus: ticket.Ticket_status,
         description: `${ticket.Subject}`,
         response: "",
@@ -196,7 +90,7 @@ function Ticketing() {
               ...ticket,
               Assignee: formData.assignee,
               Priority: formData.priority,
-              Requester: formData.customerName,
+              Requester_mail: formData.customerMail,
               Ticket_status: formData.ticketStatus,
               Subject: formData.description,
             }
@@ -212,23 +106,14 @@ function Ticketing() {
   };
 
   const allColumns = [
-    "checkbox",
     "Ticket_status",
     "Subject",
-    "Requester",
+    "Requester_mail",
     "Requested",
     "Priority",
     "Assignee",
     "Updated",
   ];
-
-  const handleCheckboxChange = (ticketId) => {
-    setSelectedTickets((prevSelected) =>
-      prevSelected.includes(ticketId)
-        ? prevSelected.filter((id) => id !== ticketId)
-        : [...prevSelected, ticketId]
-    );
-  };
 
   function TicketFilter({ tickets, onFilter }) {
     const [filters, setFilters] = useState({});
@@ -243,14 +128,13 @@ function Ticketing() {
         [field]: value,
       }));
 
-
       const filteredTickets = tickets.filter((ticket) => {
         let statusMatch = true;
 
         if (value === "SOLVED") {
           statusMatch = ticket.Ticket_status === "CLOSED";
         } else if (value === "PENDING") {
-          statusMatch = ticket.Ticket_status === "OPEN";
+          statusMatch = ticket.Ticket_status === "PENDING";
         } else if (value === "UNSOLVED") {
           statusMatch = ticket.Ticket_status === "OPEN";
         } else if (value === "All") {
@@ -302,7 +186,7 @@ function Ticketing() {
           </button>
           {showCreateTicket && (
             <div className="form-overlay">
-              <CreateTicket onClose={handleCloseForm} />
+              <CreateTicket onClose={handleCloseForm} onCreate={handleCreateTicket} />
             </div>
           )}
         </div>
@@ -322,15 +206,7 @@ function Ticketing() {
           <tbody>
             {(filteredData || data).map((row) => (
               <tr key={row.id}>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={selectedTickets.includes(row.id)}
-                    onChange={() => handleCheckboxChange(row.id)}
-                  />
-                  
-                </td>
-                {allColumns.slice(1).map((col, colIndex) => (
+                {allColumns.map((col, colIndex) => (
                   <td
                     key={colIndex}
                     data-column={col}
@@ -393,12 +269,12 @@ function Ticketing() {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="customer-name">Customer Name:</label>
+            <label htmlFor="customer-mail">Customer Email:</label>
             <input
               type="text"
-              id="customer-name"
-              name="customerName"
-              value={formData.customerName}
+              id="customer-mail"
+              email="customerMail"
+              value={formData.customerMail}
               onChange={handleInputChange}
             />
           </div>
@@ -430,7 +306,6 @@ function Ticketing() {
               rows="4"
               value={formData.response}
               onChange={handleInputChange}
-              placeholder="Enter your response"
             />
           </div>
           <div className="form-group">
@@ -441,21 +316,20 @@ function Ticketing() {
               rows="4"
               value={formData.orderDetails}
               onChange={handleInputChange}
-              placeholder="Enter order details"
             />
           </div>
-          <div className="form-buttons">
-            <button type="submit" className="submit-button">
-              Save
-            </button>
-            <button
-              type="button"
-              className="cancel-button"
-              onClick={handleFormCancel}
-            >
-              Cancel
-            </button>
-          </div>
+              <div className="button-group">
+                <button type="submit" className="save-button">
+                  Save
+                </button>
+                <button
+                  type="button"
+                  className="cancel-button"
+                  onClick={handleFormCancel}
+                >
+                  Cancel
+                </button>
+              </div>
             </form>
           </div>
         </div>
